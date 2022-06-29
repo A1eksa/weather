@@ -35,7 +35,27 @@ app.get('/', async (request, response) => {
     const forecast = filterData(json);
     response.json(forecast);
   } catch (error) {
-    res.status(400).json({ response: error, success: false });
+    response.status(400).json({ response: error, success: false });
+  }
+});
+
+app.get('/days', async (request, response) => {
+  const api_url_days =
+    'https://api.openweathermap.org/data/2.5/forecast?lat=59.3293&lon=18.0686&appid=39cc3cd47c5ea2b190a2f97c31df95bb';
+
+  try {
+    const fetch_response = await fetch(api_url_days);
+    const json = await fetch_response.json();
+    // console.log(json);
+    const weather = json.list
+      .filter((item) => item.dt_txt.includes('12:00'))
+      .map((listItem) => filterData(listItem))
+      .slice(1, 4);
+
+    response.json(weather);
+    console.log(weather);
+  } catch (error) {
+    response.status(400).json({ response: error, success: false });
   }
 });
 

@@ -5,6 +5,8 @@
     "postinstall": "npm install --prefix backend"
   },
   "dependencies": {
-    "node-fetch": "^3.2.6"
+    "browser-router": "^0.2.0",
+    "node-fetch": "^3.2.6",
+    "react-router-dom": "^6.3.0"
   }
 }

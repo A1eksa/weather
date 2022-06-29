@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Day = () => {
+export const TodayDate = () => {
   let d = new Date();
   const days = [
     'Sunday',

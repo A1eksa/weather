@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Day } from './Day';
+import { TodayDate } from './TodayDate';
 import { FaTemperatureHigh, FaTemperatureLow } from 'react-icons/fa';
 import { WiHumidity } from 'react-icons/wi';
 import { GiPressureCooker } from 'react-icons/gi';
+import { GoLocation } from 'react-icons/go';
+import { Link } from 'react-router-dom';
+import { WeatherDays } from './WeatherDays';
 
 export const Main = () => {
   const [forecast, setForecast] = useState({});
@@ -23,7 +26,7 @@ export const Main = () => {
       <WeatherWrapper>
         <InnerWrapper>
           <City>{forecast.city}</City>
-          <Day />
+          <TodayDate />
           <Description>{forecast.description}</Description>
           <Temperature>{Math.round(forecast.temp)}°</Temperature>
 
@@ -58,6 +61,9 @@ export const Main = () => {
             <p>{forecast.humidity}%</p>
           </Details>
         </DetailsWrapper>
+        <Link to='/days'>
+          <button>3 day weather</button>
+        </Link>{' '}
       </WeatherWrapper>
     </div>
   );
@@ -86,6 +92,7 @@ export const DetailsWrapper = styled.div`
   border: 1px solid white;
   border-radius: 8px;
   padding: 1rem;
+
   color: white;
   background-blend-mode: multiply;
   background-color: rgba(255, 255, 255, 0.2);
@@ -128,7 +135,7 @@ export const Description = styled.h2`
   position: absolute;
   right: -2rem;
   top: 5rem;
-  padding-bottom: 0;
+  margin-bottom: 0;
 `;
 
 export const Line = styled.div`
