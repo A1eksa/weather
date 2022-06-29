@@ -14,15 +14,20 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// try {
+//   const data = await fetchData();
+//   chacheTime = Date.now();
+//   cacheData = data;
+// } catch (error) {
+//   console.log('Here is the error', error);
+//   chacheTime = 0;
+// }
+
 // Start defining your routes here
 app.get('/', async (request, response) => {
   const api_url =
     'https://api.openweathermap.org/data/2.5/weather?lat=59.3293&lon=18.0686&appid=39cc3cd47c5ea2b190a2f97c31df95bb&units=metric';
   // single day call
-
-  // const api_url =
-  //   'https://api.openweathermap.org/data/2.5/forecast?lat=59.3293&lon=18.0686&appid=39cc3cd47c5ea2b190a2f97c31df95bb';
-  // forecast 5 day/ 3 hour
 
   try {
     const fetch_response = await fetch(api_url);
@@ -44,3 +49,7 @@ app.listen(port, () => {
 // https://api.openweathermap.org/data/2.5/forecast/daily?lat=59.3293&lon=18.0686&cnt=10&appid=0857813cedbd03d653fc7a1847fff1ec
 
 // https://api.openweathermap.org/data/2.5/weather?lat=59.3293&lon=18.0686&appid=39cc3cd47c5ea2b190a2f97c31df95bb
+
+//const api_url =
+//'https://api.openweathermap.org/data/2.5/forecast?lat=59.3293&lon=18.0686&appid=39cc3cd47c5ea2b190a2f97c31df95bb';
+// forecast 5 day/ 3 hour
