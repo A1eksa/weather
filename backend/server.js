@@ -3,6 +3,7 @@ import cors from 'cors';
 // const fetch = require('node-fetch');
 import Fetch from 'react-fetch';
 import { filterData } from './utils.js';
+// import { filterTestData } from './utils.js';
 
 // Defines the port the app will run on. Defaults to 8080, but can be overridden
 // when starting the server. Example command to overwrite PORT env variable value:
@@ -14,25 +15,35 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// try {
-//   const data = await fetchData();
-//   chacheTime = Date.now();
-//   cacheData = data;
-// } catch (error) {
-//   console.log('Here is the error', error);
-//   chacheTime = 0;
-// }
+// Start defining your routes here//original get point!! do not change
+// app.get('/', async (request, response) => {
+//   const api_url =
+//     'https://api.openweathermap.org/data/2.5/weather?lat=59.3293&lon=18.0686&appid=39cc3cd47c5ea2b190a2f97c31df95bb&units=metric';
 
-// Start defining your routes here
+//   try {
+//     const fetch_response = await fetch(api_url);
+//     const json = await fetch_response.json();
+//     const forecast = filterData(json);
+//     response.json(forecast);
+//   } catch (error) {
+//     response.status(400).json({ response: error, success: false });
+//   }
+// });
+
+///TEST get point
 app.get('/', async (request, response) => {
-  const api_url =
-    'https://api.openweathermap.org/data/2.5/weather?lat=59.3293&lon=18.0686&appid=39cc3cd47c5ea2b190a2f97c31df95bb&units=metric';
-  // single day call
+  const api_url_days =
+    'https://api.openweathermap.org/data/2.5/forecast?lat=59.3293&lon=18.0686&appid=39cc3cd47c5ea2b190a2f97c31df95bb&units=metric';
 
   try {
-    const fetch_response = await fetch(api_url);
+    const fetch_response = await fetch(api_url_days);
     const json = await fetch_response.json();
-    const forecast = filterData(json);
+    console.log(json);
+    const forecast = json.list
+      .filter((item) => item.dt_txt)
+      .map((listItem) => filterData(listItem))
+      .slice(0, 4);
+    console.log(forecast);
     response.json(forecast);
   } catch (error) {
     response.status(400).json({ response: error, success: false });
@@ -41,19 +52,17 @@ app.get('/', async (request, response) => {
 
 app.get('/days', async (request, response) => {
   const api_url_days =
-    'https://api.openweathermap.org/data/2.5/forecast?lat=59.3293&lon=18.0686&appid=39cc3cd47c5ea2b190a2f97c31df95bb';
+    'https://api.openweathermap.org/data/2.5/forecast?lat=59.3293&lon=18.0686&appid=39cc3cd47c5ea2b190a2f97c31df95bb&units=metric';
 
   try {
     const fetch_response = await fetch(api_url_days);
     const json = await fetch_response.json();
     // console.log(json);
     const weather = json.list
-      .filter((item) => item.dt_txt.includes('12:00'))
-      .map((listItem) => filterData(listItem))
-      .slice(1, 4);
+      .filter((item) => item.dt_txt.includes('21:00'))
+      .map((listItem) => filterData(listItem));
 
     response.json(weather);
-    console.log(weather);
   } catch (error) {
     response.status(400).json({ response: error, success: false });
   }
@@ -63,13 +72,3 @@ app.get('/days', async (request, response) => {
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
-// https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=59.3293&lon=18.0686&appid=eecbdbcaf5898765ececc528ec1f76a8
-// 3hour forcast 5 day works 'https://api.openweathermap.org/data/2.5/forecast?lat=59.3293&lon=18.0686&appid=39cc3cd47c5ea2b190a2f97c31df95bb';
-
-// https://api.openweathermap.org/data/2.5/forecast/daily?lat=59.3293&lon=18.0686&cnt=10&appid=0857813cedbd03d653fc7a1847fff1ec
-
-// https://api.openweathermap.org/data/2.5/weather?lat=59.3293&lon=18.0686&appid=39cc3cd47c5ea2b190a2f97c31df95bb
-
-//const api_url =
-//'https://api.openweathermap.org/data/2.5/forecast?lat=59.3293&lon=18.0686&appid=39cc3cd47c5ea2b190a2f97c31df95bb';
-// forecast 5 day/ 3 hour
