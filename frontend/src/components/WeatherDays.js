@@ -2,17 +2,16 @@ import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
 import { FaTemperatureHigh, FaTemperatureLow } from 'react-icons/fa';
 import { WiHumidity } from 'react-icons/wi';
 import { GiPressureCooker } from 'react-icons/gi';
+import { GrPrevious, GrNext } from 'react-icons/gr';
 
 import {
   WeatherWrapper,
   DetailsWrapper,
   InnerWrapper,
   Icon,
-  Country,
   City,
   Temperature,
   Description,
@@ -20,6 +19,7 @@ import {
   Details,
   Button,
   TodayDay,
+  ButtonContainer,
 } from './_WeatherStyles';
 
 export const WeatherDays = ({ day, setDay }) => {
@@ -29,11 +29,9 @@ export const WeatherDays = ({ day, setDay }) => {
   const navigate = useNavigate();
 
   const { index } = useParams();
-  console.log(index);
 
   const NextDay = () => {
     setDay(day + 1);
-    console.log(day);
   };
 
   const PrevDay = () => {
@@ -54,10 +52,8 @@ export const WeatherDays = ({ day, setDay }) => {
       .then((res) => res.json())
       .then((data) => {
         setWeather(data[index]);
-        console.log(data);
       });
   }, [index]);
-  // const todayWeather = weather[index];
 
   return (
     <>
@@ -101,8 +97,16 @@ export const WeatherDays = ({ day, setDay }) => {
               <p>{weather.humidity}%</p>
             </Details>
           </DetailsWrapper>
-          <Button onClick={PrevDay}>PREV</Button>
-          <Button onClick={NextDay}>NEXT</Button>
+          <ButtonContainer>
+            <Button onClick={PrevDay}>
+              <GrPrevious />
+              PREV DAY
+            </Button>
+            <Button onClick={NextDay}>
+              NEXT DAY
+              <GrNext />
+            </Button>
+          </ButtonContainer>
         </WeatherWrapper>
       </div>
     </>

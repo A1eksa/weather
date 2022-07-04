@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
-// import { Provider } from 'react-redux';
 import { Main } from './components/Main';
 import { WeatherDays } from './components/WeatherDays';
 

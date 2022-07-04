@@ -58,7 +58,7 @@ export const Temperature = styled.h2`
 `;
 export const Description = styled.h2`
   font-size: 1.25rem;
-  color: white;
+  color: rgb(251, 206, 177);
   transform: rotate(-90deg);
   align-item: right;
   position: absolute;
@@ -77,10 +77,18 @@ export const Details = styled.div`
 `;
 
 export const Button = styled.button`
-  position: relative;
-
-  right: 1rem;
-  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  width: 175px;
+  border-radius: 50px;
+  margin-right: 0.5rem;
+  transition: 0.4s;
+  border: none;
+  color: white;
+  max-width: 200px;
+  background-color: rgba(255, 255, 255, 0.3);
 `;
 
 export const TodayDay = styled.div`
@@ -93,13 +101,10 @@ export const ButtonContainer = styled.div`
   position: relative;
   top: 15rem;
   padding: 2rem;
-  border: white solid 2px;
-  background-color: rgba(255, 255, 255, 0.3);
 `;
 
 export const ButtonText = styled.div`
   color: white;
   position: relative;
-
   right: 1rem;
 `;

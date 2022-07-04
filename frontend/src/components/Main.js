@@ -4,12 +4,13 @@ import { WiHumidity } from 'react-icons/wi';
 import { GiPressureCooker } from 'react-icons/gi';
 import { useNavigate } from 'react-router-dom';
 import { LoadingItem } from './LoadingItem';
+import { GrPrevious, GrNext } from 'react-icons/gr';
+
 import {
   WeatherWrapper,
   DetailsWrapper,
   InnerWrapper,
   Icon,
-  Country,
   City,
   Temperature,
   Description,
@@ -18,14 +19,12 @@ import {
   Button,
   TodayDay,
   ButtonContainer,
-  ButtonText,
 } from './_WeatherStyles';
 
 import moment from 'moment';
 export const Main = ({ day, setDay }) => {
   const url = 'http://localhost:8080/';
   const [forecast, setForecast] = useState([]);
-  console.log(forecast);
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -56,7 +55,6 @@ export const Main = ({ day, setDay }) => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setForecast(data[0]);
       })
       .finally(() => setLoading(false));
@@ -105,9 +103,14 @@ export const Main = ({ day, setDay }) => {
             </Details>
           </DetailsWrapper>
           <ButtonContainer>
-            <Button onClick={PrevDay}>PREV</Button>
-            <ButtonText>3 Day forecast</ButtonText>
-            <Button onClick={NextDay}>NEXT</Button>
+            <Button onClick={PrevDay}>
+              <GrPrevious />
+              PREV DAY
+            </Button>
+            <Button onClick={NextDay}>
+              NEXT DAY
+              <GrNext color='white' />
+            </Button>
           </ButtonContainer>
         </WeatherWrapper>
       </div>
