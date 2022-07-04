@@ -67,7 +67,6 @@ export const WeatherDays = ({ day, setDay }) => {
             <City>stockholm</City>
             <City>{day.city}</City>
             <TodayDay>{moment(weather.date * 1000).format('LL')}</TodayDay>
-            {/* <TodayDate /> */}
             <Description>{weather.description}</Description>
             <Temperature>{Math.round(weather.temp)}°</Temperature>
 
@@ -106,13 +105,6 @@ export const WeatherDays = ({ day, setDay }) => {
           <Button onClick={NextDay}>NEXT</Button>
         </WeatherWrapper>
       </div>
-      {/* <div>
-        <h3>{weather.description}</h3>
-        <p>{Math.round(weather.temp)}°</p>
-        <p>{moment(new Date(weather.dt)).format('MM-DD-YYYY, hh:mm:ss a')}</p>
-      </div> */}
-      {/* <Button onClick={PrevDay}>PREV</Button>
-      <Button onClick={NextDay}>NEXT</Button> */}
     </>
   );
 };

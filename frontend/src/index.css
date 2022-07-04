@@ -17,6 +17,7 @@ code {
   background-size: cover;
   background-position: bottom;
   transition: 0.4 ease;
+  background-color: rgb(136, 171, 174);
 }
 
 .warm {
