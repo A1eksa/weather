@@ -4,7 +4,6 @@ import { WiHumidity } from 'react-icons/wi';
 import { GiPressureCooker } from 'react-icons/gi';
 import { useNavigate } from 'react-router-dom';
 import { LoadingItem } from './LoadingItem';
-import { GrPrevious, GrNext } from 'react-icons/gr';
 
 import {
   WeatherWrapper,
@@ -16,12 +15,14 @@ import {
   Description,
   Line,
   Details,
-  Button,
+  ButtonLeft,
+  ButtonRight,
   TodayDay,
   ButtonContainer,
 } from './_WeatherStyles';
 
 import moment from 'moment';
+
 export const Main = ({ day, setDay }) => {
   const url = 'http://localhost:8080/';
   const [forecast, setForecast] = useState([]);
@@ -31,7 +32,6 @@ export const Main = ({ day, setDay }) => {
 
   const NextDay = () => {
     setDay(day + 1);
-    console.log(day);
   };
 
   const PrevDay = () => {
@@ -103,14 +103,8 @@ export const Main = ({ day, setDay }) => {
             </Details>
           </DetailsWrapper>
           <ButtonContainer>
-            <Button onClick={PrevDay}>
-              <GrPrevious />
-              PREV DAY
-            </Button>
-            <Button onClick={NextDay}>
-              NEXT DAY
-              <GrNext color='white' />
-            </Button>
+            <ButtonLeft onClick={PrevDay}>PREV DAY</ButtonLeft>
+            <ButtonRight onClick={NextDay}>NEXT DAY</ButtonRight>
           </ButtonContainer>
         </WeatherWrapper>
       </div>

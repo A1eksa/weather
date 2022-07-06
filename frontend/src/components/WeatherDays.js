@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { FaTemperatureHigh, FaTemperatureLow } from 'react-icons/fa';
 import { WiHumidity } from 'react-icons/wi';
 import { GiPressureCooker } from 'react-icons/gi';
-import { GrPrevious, GrNext } from 'react-icons/gr';
 
 import {
   WeatherWrapper,
@@ -17,7 +16,8 @@ import {
   Description,
   Line,
   Details,
-  Button,
+  ButtonLeft,
+  ButtonRight,
   TodayDay,
   ButtonContainer,
 } from './_WeatherStyles';
@@ -98,14 +98,8 @@ export const WeatherDays = ({ day, setDay }) => {
             </Details>
           </DetailsWrapper>
           <ButtonContainer>
-            <Button onClick={PrevDay}>
-              <GrPrevious />
-              PREV DAY
-            </Button>
-            <Button onClick={NextDay}>
-              NEXT DAY
-              <GrNext />
-            </Button>
+            <ButtonLeft onClick={PrevDay}>PREV DAY</ButtonLeft>
+            <ButtonRight onClick={NextDay}>NEXT DAY</ButtonRight>
           </ButtonContainer>
         </WeatherWrapper>
       </div>

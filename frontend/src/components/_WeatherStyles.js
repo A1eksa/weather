@@ -1,3 +1,4 @@
+import { FaTemperatureHigh } from 'react-icons/fa';
 import styled from 'styled-components';
 
 export const WeatherWrapper = styled.div`
@@ -21,10 +22,10 @@ export const DetailsWrapper = styled.div`
   border: 1px solid white;
   border-radius: 8px;
   padding: 0.75rem, 1rem, 0.75rem, 1rem;
-
   color: white;
   background-blend-mode: multiply;
   background-color: rgba(255, 255, 255, 0.1);
+  font-weight: bold;
 `;
 
 export const InnerWrapper = styled.div`
@@ -76,13 +77,28 @@ export const Details = styled.div`
   padding: 1.25rem;
 `;
 
-export const Button = styled.button`
+export const ButtonLeft = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 45px;
+  height: 55px;
   width: 175px;
-  border-radius: 50px;
+  border-radius: 50px 0 0 50px;
+  margin-right: 0.5rem;
+  transition: 0.4s;
+  border: none;
+  color: white;
+  max-width: 200px;
+  background-color: rgba(255, 255, 255, 0.3);
+`;
+
+export const ButtonRight = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 55px;
+  width: 175px;
+  border-radius: 0 50px 50px 0;
   margin-right: 0.5rem;
   transition: 0.4s;
   border: none;
@@ -98,9 +114,10 @@ export const TodayDay = styled.div`
 
 export const ButtonContainer = styled.div`
   display: flex;
+  justify-content: space-between;
   position: relative;
   top: 15rem;
-  padding: 2rem;
+  padding: 2rem 0 2rem 0;
 `;
 
 export const ButtonText = styled.div`
