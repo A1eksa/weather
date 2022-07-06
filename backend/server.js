@@ -23,7 +23,6 @@ app.get('/', async (request, response) => {
       .filter((item) => item.dt_txt)
       .map((listItem) => filterData(listItem))
       .slice(0, 4);
-    console.log(forecast);
     response.json(forecast);
   } catch (error) {
     response.status(400).json({ response: error, success: false });
