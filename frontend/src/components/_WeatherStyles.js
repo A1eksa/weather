@@ -21,7 +21,6 @@ export const DetailsWrapper = styled.div`
   margin-top: 10rem;
   border: 1px solid white;
   border-radius: 8px;
-  padding: 0.75rem, 1rem, 0.75rem, 1rem;
   color: white;
   background-blend-mode: multiply;
   background-color: rgba(255, 255, 255, 0.1);

@@ -61,7 +61,6 @@ export const WeatherDays = ({ day, setDay }) => {
         <WeatherWrapper>
           <InnerWrapper>
             <City>stockholm</City>
-            <City>{day.city}</City>
             <TodayDay>{moment(weather.date * 1000).format('LL')}</TodayDay>
             <Description>{weather.description}</Description>
             <Temperature>{Math.round(weather.temp)}°</Temperature>
